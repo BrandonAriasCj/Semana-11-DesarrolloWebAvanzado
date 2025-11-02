@@ -99,11 +99,11 @@ export default function DashboardPage() {
   }, [tasks, members, projects])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">Dashboard de Proyectos</h1>
-          <p className="text-slate-600">Gestiona tus proyectos y tareas con shadcn/ui - Datos en tiempo real</p>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">Dashboard de Proyectos</h1>
+          <p className="text-gray-600">Gestiona tus proyectos y tareas con shadcn/ui - Datos en tiempo real</p>
           
           {/* Dynamic Alerts */}
           {alerts.length > 0 && (
@@ -126,21 +126,21 @@ export default function DashboardPage() {
         )}
 
         <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="overview">Resumen</TabsTrigger>
-            <TabsTrigger value="projects">Proyectos ({projects.length})</TabsTrigger>
-            <TabsTrigger value="team">Equipo ({members.length})</TabsTrigger>
-            <TabsTrigger value="tasks">Tareas ({tasks.length})</TabsTrigger>
-            <TabsTrigger value="settings">Configuración</TabsTrigger>
+          <TabsList className="bg-white/80 backdrop-blur-sm shadow-lg border-0">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white">Resumen</TabsTrigger>
+            <TabsTrigger value="projects" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white">Proyectos ({projects.length})</TabsTrigger>
+            <TabsTrigger value="team" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white">Equipo ({members.length})</TabsTrigger>
+            <TabsTrigger value="tasks" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white">Tareas ({tasks.length})</TabsTrigger>
+            <TabsTrigger value="settings" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white">Configuración</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-4">
             {/* Dynamic Metrics */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Card>
+              <Card className="bg-gradient-to-br from-white to-blue-50/50 border-blue-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Proyectos</CardTitle>
-                  <BarChart3 className="h-4 w-4 text-muted-foreground" />
+                  <BarChart3 className="h-4 w-4 text-blue-500" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{metrics.totalProjects}</div>
@@ -150,10 +150,10 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-gradient-to-br from-white to-green-50/50 border-green-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Tareas Completadas</CardTitle>
-                  <CheckCircle className="h-4 w-4 text-muted-foreground" />
+                  <CheckCircle className="h-4 w-4 text-green-500" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{metrics.completedTasks}</div>
@@ -163,10 +163,10 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-gradient-to-br from-white to-orange-50/50 border-orange-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Horas Estimadas</CardTitle>
-                  <Clock className="h-4 w-4 text-muted-foreground" />
+                  <Clock className="h-4 w-4 text-orange-500" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{metrics.totalHours}h</div>
@@ -176,10 +176,10 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-gradient-to-br from-white to-purple-50/50 border-purple-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Miembros Activos</CardTitle>
-                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <Users className="h-4 w-4 text-purple-500" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{metrics.activeMembers}</div>
@@ -191,9 +191,9 @@ export default function DashboardPage() {
             </div>
 
             {/* Real-time Activity */}
-            <Card>
+            <Card className="bg-white/80 backdrop-blur-sm shadow-lg border-gray-200/50">
               <CardHeader>
-                <CardTitle>Actividad Reciente</CardTitle>
+                <CardTitle className="text-gray-800">Actividad Reciente</CardTitle>
                 <CardDescription>Últimas actualizaciones basadas en datos reales</CardDescription>
               </CardHeader>
               <CardContent>
@@ -227,7 +227,7 @@ export default function DashboardPage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold">Proyectos</h2>
               <div className="flex gap-2">
-                <Button onClick={() => simulateOperation('create')}>
+                <Button onClick={() => simulateOperation('create')} className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 shadow-lg hover:shadow-xl transition-all duration-300">
                   {loadingStates.save ? (
                     <><Spinner size="sm" className="mr-2" /> Creando...</>
                   ) : (
@@ -282,9 +282,9 @@ export default function DashboardPage() {
                           <span className="text-muted-foreground">Progreso</span>
                           <span className="font-medium">{project.progress}%</span>
                         </div>
-                        <div className="w-full bg-secondary h-2 rounded-full overflow-hidden">
+                        <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-primary transition-all"
+                            className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 shadow-sm"
                             style={{ width: `${project.progress}%` }}
                           />
                         </div>
